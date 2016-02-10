@@ -38,6 +38,11 @@ server.register(Inert).then(() => {
     });
   }
 
+  server.ext('onRequest',(request, reply) => {
+      console.log(`LOG:: [${request.method.toUpperCase()}] ${request.path}`);
+      return reply.continue();
+  });
+
   server.ext('onPreResponse', (request, reply) => {
 
     var response = request.response;
